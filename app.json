@@ -22,6 +22,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "94b89e34-4667-4cdd-acb6-6366aa3e15a4"
+      }
+    },
+    "owner": "kymrhys"
   }
 }
