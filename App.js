@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, KeyboardAvoidingView, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 
 
@@ -34,7 +34,7 @@ export default function App() {
     <ScrollView style={styles.container}>
       <KeyboardAvoidingView>
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>SALES{"\n"}INVOICE{"\n"}CALCULATOR</Text>
+          <Text style={styles.headerText}>SALES{"\n"}INVOICE{"\n"}<Text style={{ fontSize: 36 }}>CALCULATOR</Text></Text>
         </View>
         <View style={{ marginVertical: 35, }}>
           <View style={styles.containerInput}>
@@ -59,7 +59,14 @@ export default function App() {
 
           </View>
 
-          <View style={{ marginHorizontal: 16, marginVertical: 32 }}><Button title='clear' onPress={clear} color='red' /></View>
+          <Pressable
+            onPress={clear}
+            style={[styles.button, price ? { backgroundColor: 'red', } : { backgroundColor: 'gray', }]}
+            disabled={price ? false : true}
+          >
+            <Text style={styles.buttonText}>CLEAR</Text>
+
+          </Pressable>
 
 
         </View>
@@ -112,6 +119,23 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     color: 'gray'
 
+  },
+  button: {
+    height: 52,
+
+    marginHorizontal: 16,
+    marginVertical: 32,
+    padding: 10,
+    justifyContent: 'center',
+    borderRadius: 20
+
+
+  },
+  buttonText: {
+    textAlign: 'center',
+    fontSize: 18,
+    color: '#fff',
+    fontWeight: 'bold'
   }
 
 });
