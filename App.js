@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ImageBackground, KeyboardAvoidingView, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 
 
@@ -31,10 +31,16 @@ export default function App() {
 
   return (
 
-    <ScrollView style={styles.container}>
-      <KeyboardAvoidingView>
+    <View style={styles.container}>
+      <ImageBackground style={{
+        flex: 1,
+        justifyContent: 'center',
+      }} source={require('./assets/daiso-bg.png')} resizeMode='cover' >
+
+
         <View style={styles.headerContainer}>
           <Text style={styles.headerText}>SALES{"\n"}INVOICE{"\n"}<Text style={{ fontSize: 36 }}>CALCULATOR</Text></Text>
+
         </View>
         <View style={{ marginVertical: 35, }}>
           <View style={styles.containerInput}>
@@ -43,9 +49,10 @@ export default function App() {
               style={styles.input}
               value={price}
               onChangeText={onChangePrice}
-              placeholder='00.00'
+              placeholder='total price'
               inputMode='numeric'
               onBlur={total}
+              onFocus={clear}
 
             />
           </View>
@@ -61,7 +68,7 @@ export default function App() {
 
           <Pressable
             onPress={clear}
-            style={[styles.button, price ? { backgroundColor: 'red', } : { backgroundColor: 'gray', }]}
+            style={[styles.button, price ? { backgroundColor: '#EF018D', } : { backgroundColor: '#FFC7C7', }]}
             disabled={price ? false : true}
           >
             <Text style={styles.buttonText}>CLEAR</Text>
@@ -71,17 +78,22 @@ export default function App() {
 
         </View>
         <Text style={{ textAlign: 'center' }}>by: Kym Rhys Mallari</Text>
-      </KeyboardAvoidingView>
-      <StatusBar style="auto" />
-    </ScrollView>
+
+        <StatusBar style="auto" />
+      </ImageBackground>
+    </View>
 
   );
 }
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+
+
 
   },
   headerContainer: {
@@ -117,7 +129,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     textAlign: 'center',
     borderBottomWidth: 3,
-    color: 'gray'
+    color: '#161616'
 
   },
   button: {
