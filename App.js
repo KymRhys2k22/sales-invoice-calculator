@@ -77,7 +77,7 @@ export default function App() {
 
 
         </View>
-        <Text style={{ textAlign: 'center' }}>by: Kym Rhys Mallari</Text>
+        <Text style={{ textAlign: 'center' }}>Created by: Kym Rhys Mallari</Text>
 
         <StatusBar style="auto" />
       </ImageBackground>
@@ -134,6 +134,14 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 52,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
 
     marginHorizontal: 16,
     marginVertical: 32,
